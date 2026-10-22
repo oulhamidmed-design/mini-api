@@ -36,3 +36,9 @@ def compter_voyelles(texte: str) -> int:
     """Compte les voyelles (a, e, i, o, u, y), accents et casse ignorés."""
     _verifier(texte)
     return sum(1 for c in _normaliser(texte) if c in VOYELLES)
+
+
+def inverser(texte: str) -> str:
+    """Renvoie le texte à l'envers."""
+    _verifier(texte)
+    return texte[::-1]

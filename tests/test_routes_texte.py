@@ -23,3 +23,13 @@ def test_route_voyelles():
 
 def test_route_voyelles_texte_vide():
     assert client.get("/voyelles/%20").status_code == 400
+
+
+def test_route_inverser():
+    r = client.get("/inverser/abc")
+    assert r.status_code == 200
+    assert r.json() == {"texte": "abc", "resultat": "cba"}
+
+
+def test_route_inverser_texte_vide():
+    assert client.get("/inverser/%20").status_code == 400

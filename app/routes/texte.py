@@ -20,3 +20,11 @@ def route_voyelles(texte: str):
         return {"texte": texte, "voyelles": outils_texte.compter_voyelles(texte)}
     except ValueError as e:
         raise erreur_400(str(e)) from e
+
+
+@router.get("/inverser/{texte}")
+def route_inverser(texte: str):
+    try:
+        return {"texte": texte, "resultat": outils_texte.inverser(texte)}
+    except ValueError as e:
+        raise erreur_400(str(e)) from e
