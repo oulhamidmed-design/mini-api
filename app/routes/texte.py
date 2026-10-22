@@ -12,3 +12,11 @@ def route_palindrome(texte: str):
         return {"texte": texte, "palindrome": outils_texte.est_palindrome(texte)}
     except ValueError as e:
         raise erreur_400(str(e)) from e
+
+
+@router.get("/voyelles/{texte}")
+def route_voyelles(texte: str):
+    try:
+        return {"texte": texte, "voyelles": outils_texte.compter_voyelles(texte)}
+    except ValueError as e:
+        raise erreur_400(str(e)) from e
