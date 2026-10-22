@@ -37,3 +37,19 @@ def test_compter_voyelles_erreur():
         outils_texte.compter_voyelles("")
     with pytest.raises(ValueError):
         outils_texte.compter_voyelles("   ")
+
+
+def test_inverser_cas_normal():
+    assert outils_texte.inverser("abc") == "cba"
+
+
+def test_inverser_cas_limite():
+    assert outils_texte.inverser("a") == "a"
+    assert outils_texte.inverser("a b") == "b a"
+
+
+def test_inverser_erreur():
+    with pytest.raises(ValueError):
+        outils_texte.inverser("")
+    with pytest.raises(ValueError):
+        outils_texte.inverser("a" * 1001)
