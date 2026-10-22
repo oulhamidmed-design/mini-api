@@ -13,3 +13,13 @@ def test_route_palindrome():
 
 def test_route_palindrome_texte_vide():
     assert client.get("/palindrome/%20").status_code == 400
+
+
+def test_route_voyelles():
+    r = client.get("/voyelles/Bonjour")
+    assert r.status_code == 200
+    assert r.json() == {"texte": "Bonjour", "voyelles": 3}
+
+
+def test_route_voyelles_texte_vide():
+    assert client.get("/voyelles/%20").status_code == 400
