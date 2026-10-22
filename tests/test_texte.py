@@ -21,3 +21,19 @@ def test_est_palindrome_erreur():
         outils_texte.est_palindrome("!!!")
     with pytest.raises(ValueError):
         outils_texte.est_palindrome("a" * 1001)
+
+
+def test_compter_voyelles_cas_normal():
+    assert outils_texte.compter_voyelles("Bonjour") == 3
+
+
+def test_compter_voyelles_cas_limite():
+    assert outils_texte.compter_voyelles("bcdfg") == 0
+    assert outils_texte.compter_voyelles("Éléphant") == 3
+
+
+def test_compter_voyelles_erreur():
+    with pytest.raises(ValueError):
+        outils_texte.compter_voyelles("")
+    with pytest.raises(ValueError):
+        outils_texte.compter_voyelles("   ")
