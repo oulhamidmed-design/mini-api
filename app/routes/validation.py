@@ -21,3 +21,11 @@ def route_mdp(mdp: str):
         return {"robuste": outils_validation.mdp_robuste(mdp)}
     except ValueError as e:
         raise erreur_400(str(e)) from e
+
+
+@router.get("/code-postal/{cp}")
+def route_code_postal(cp: str):
+    try:
+        return {"code_postal": cp, "valide": outils_validation.code_postal(cp)}
+    except ValueError as e:
+        raise erreur_400(str(e)) from e

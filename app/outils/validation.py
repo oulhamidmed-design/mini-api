@@ -34,3 +34,12 @@ def mdp_robuste(mdp: str) -> bool:
         and any(c.isdigit() for c in mdp)
         and any(not c.isalnum() for c in mdp)
     )
+
+
+def code_postal(cp: str) -> bool:
+    """Indique si cp est un code postal français plausible.
+
+    Il faut 5 chiffres, avec un département compris entre 01 et 98.
+    """
+    _verifier(cp)
+    return REGEX_CODE_POSTAL.fullmatch(cp) is not None
