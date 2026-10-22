@@ -15,4 +15,4 @@ def installer_gestionnaires(app: FastAPI) -> None:
 
     @app.exception_handler(RequestValidationError)
     async def entree_invalide(request: Request, exc: RequestValidationError):
-        return JSONResponse(status_code=400, content={"detail": "entrée invalide"})
+        return JSONResponse(status_code=400, content={"detail": "entrée invalide : type de paramètre incorrect"})
