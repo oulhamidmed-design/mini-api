@@ -32,3 +32,17 @@ def est_premier(n: int) -> bool:
             return False
         diviseur += 1
     return True
+
+
+def pgcd(a: int, b: int) -> int:
+    """Plus grand commun diviseur de a et b.
+
+    Lève ValueError si a ou b est négatif, ou si les deux valent 0.
+    """
+    if a < 0 or b < 0:
+        raise ValueError("a et b doivent être positifs")
+    if a == 0 and b == 0:
+        raise ValueError("le pgcd de 0 et 0 n'est pas défini")
+    while b:
+        a, b = b, a % b
+    return a
