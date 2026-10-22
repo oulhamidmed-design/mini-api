@@ -20,3 +20,11 @@ def route_premier(n: int):
         return {"n": n, "premier": outils_math.est_premier(n)}
     except ValueError as e:
         raise erreur_400(str(e)) from e
+
+
+@router.get("/pgcd/{a}/{b}")
+def route_pgcd(a: int, b: int):
+    try:
+        return {"a": a, "b": b, "resultat": outils_math.pgcd(a, b)}
+    except ValueError as e:
+        raise erreur_400(str(e)) from e
