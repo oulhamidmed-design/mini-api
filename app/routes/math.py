@@ -12,3 +12,11 @@ def route_factorielle(n: int):
         return {"n": n, "resultat": outils_math.factorielle(n)}
     except ValueError as e:
         raise erreur_400(str(e)) from e
+
+
+@router.get("/premier/{n}")
+def route_premier(n: int):
+    try:
+        return {"n": n, "premier": outils_math.est_premier(n)}
+    except ValueError as e:
+        raise erreur_400(str(e)) from e
