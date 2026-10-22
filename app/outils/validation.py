@@ -21,3 +21,16 @@ def email_valide(email: str) -> bool:
     """Indique si l'adresse a une forme d'email valide (nom@domaine.extension)."""
     _verifier(email)
     return REGEX_EMAIL.fullmatch(email) is not None
+
+
+def mdp_robuste(mdp: str) -> bool:
+    """Un mot de passe est robuste s'il a au moins 8 caractères dont une minuscule,
+    une majuscule, un chiffre et un caractère spécial."""
+    _verifier(mdp)
+    return (
+        len(mdp) >= 8
+        and any(c.islower() for c in mdp)
+        and any(c.isupper() for c in mdp)
+        and any(c.isdigit() for c in mdp)
+        and any(not c.isalnum() for c in mdp)
+    )
