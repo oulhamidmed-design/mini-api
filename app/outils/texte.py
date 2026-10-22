@@ -30,3 +30,9 @@ def est_palindrome(texte: str) -> bool:
     if not lettres:
         raise ValueError("le texte doit contenir au moins une lettre ou un chiffre")
     return lettres == lettres[::-1]
+
+
+def compter_voyelles(texte: str) -> int:
+    """Compte les voyelles (a, e, i, o, u, y), accents et casse ignorés."""
+    _verifier(texte)
+    return sum(1 for c in _normaliser(texte) if c in VOYELLES)
