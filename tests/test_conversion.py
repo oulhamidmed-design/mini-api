@@ -19,3 +19,18 @@ def test_celsius_fahrenheit_erreur():
         outils_conversion.celsius_fahrenheit(float("inf"))
     with pytest.raises(ValueError):
         outils_conversion.celsius_fahrenheit(float("nan"))
+
+
+def test_km_miles_cas_normal():
+    assert outils_conversion.km_miles(10) == 6.2137
+
+
+def test_km_miles_cas_limite():
+    assert outils_conversion.km_miles(0) == 0.0
+
+
+def test_km_miles_erreur():
+    with pytest.raises(ValueError):
+        outils_conversion.km_miles(-1)
+    with pytest.raises(ValueError):
+        outils_conversion.km_miles(float("nan"))
