@@ -1,0 +1,15 @@
+"""Fonctions mathématiques de l'API."""
+
+LIMITE_FACTORIELLE = 1000
+
+
+def factorielle(n: int) -> int:
+    """Renvoie n!. Lève ValueError si n est négatif ou supérieur à 1000."""
+    if n < 0:
+        raise ValueError("n doit être positif")
+    if n > LIMITE_FACTORIELLE:
+        raise ValueError(f"n doit être inférieur ou égal à {LIMITE_FACTORIELLE}")
+    resultat = 1
+    for i in range(2, n + 1):
+        resultat *= i
+    return resultat
