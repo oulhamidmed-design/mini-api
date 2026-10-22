@@ -18,3 +18,10 @@ def celsius_fahrenheit(celsius: float) -> float:
     if celsius < ZERO_ABSOLU_C:
         raise ValueError("la température est inférieure au zéro absolu (-273.15)")
     return round(celsius * 9 / 5 + 32, 2)
+
+
+def km_miles(km: float) -> float:
+    """Convertit des kilomètres en miles (arrondi à 4 décimales)."""
+    if not isfinite(km) or km < 0:
+        raise ValueError("la distance doit être un nombre positif")
+    return round(km * MILES_PAR_KM, 4)

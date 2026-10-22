@@ -13,3 +13,11 @@ def route_celsius(valeur: float):
         return {"celsius": valeur, "fahrenheit": resultat}
     except ValueError as e:
         raise erreur_400(str(e)) from e
+
+
+@router.get("/km-miles/{km}")
+def route_km_miles(km: float):
+    try:
+        return {"km": km, "miles": outils_conversion.km_miles(km)}
+    except ValueError as e:
+        raise erreur_400(str(e)) from e
