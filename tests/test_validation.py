@@ -37,3 +37,23 @@ def test_mdp_robuste_erreur():
         outils_validation.mdp_robuste("")
     with pytest.raises(ValueError):
         outils_validation.mdp_robuste("a" * 255)
+
+
+def test_code_postal_cas_normal():
+    assert outils_validation.code_postal("75001") is True
+    assert outils_validation.code_postal("abcde") is False
+
+
+def test_code_postal_cas_limite():
+    assert outils_validation.code_postal("01000") is True
+    assert outils_validation.code_postal("98000") is True
+    assert outils_validation.code_postal("00100") is False
+    assert outils_validation.code_postal("99999") is False
+    assert outils_validation.code_postal("7500") is False
+
+
+def test_code_postal_erreur():
+    with pytest.raises(ValueError):
+        outils_validation.code_postal("")
+    with pytest.raises(ValueError):
+        outils_validation.code_postal("1" * 255)
