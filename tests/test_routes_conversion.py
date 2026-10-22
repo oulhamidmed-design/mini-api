@@ -27,3 +27,13 @@ def test_route_km_miles():
 
 def test_route_km_miles_negatif():
     assert client.get("/km-miles/-1").status_code == 400
+
+
+def test_route_euros():
+    r = client.get("/euros/100/usd")
+    assert r.status_code == 200
+    assert r.json() == {"euros": 100.0, "devise": "USD", "resultat": 108.0}
+
+
+def test_route_euros_devise_inconnue():
+    assert client.get("/euros/100/XXX").status_code == 400
