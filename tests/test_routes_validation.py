@@ -33,3 +33,17 @@ def test_route_mdp_faible():
 
 def test_route_mdp_vide():
     assert client.get("/mot-de-passe/%20").status_code == 400
+
+
+def test_route_code_postal():
+    r = client.get("/code-postal/75001")
+    assert r.status_code == 200
+    assert r.json() == {"code_postal": "75001", "valide": True}
+
+
+def test_route_code_postal_invalide():
+    assert client.get("/code-postal/99999").json()["valide"] is False
+
+
+def test_route_code_postal_vide():
+    assert client.get("/code-postal/%20").status_code == 400
