@@ -27,3 +27,13 @@ def test_route_premier():
 
 def test_route_premier_negatif():
     assert client.get("/premier/-3").status_code == 400
+
+
+def test_route_pgcd():
+    r = client.get("/pgcd/12/18")
+    assert r.status_code == 200
+    assert r.json() == {"a": 12, "b": 18, "resultat": 6}
+
+
+def test_route_pgcd_negatif():
+    assert client.get("/pgcd/-1/5").status_code == 400
