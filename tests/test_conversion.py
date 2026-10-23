@@ -34,3 +34,19 @@ def test_km_miles_erreur():
         outils_conversion.km_miles(-1)
     with pytest.raises(ValueError):
         outils_conversion.km_miles(float("nan"))
+
+
+def test_euros_devise_cas_normal():
+    assert outils_conversion.euros_devise(100, "USD") == 108.0
+
+
+def test_euros_devise_cas_limite():
+    assert outils_conversion.euros_devise(0, "JPY") == 0.0
+    assert outils_conversion.euros_devise(10, "usd") == 10.8
+
+
+def test_euros_devise_erreur():
+    with pytest.raises(ValueError):
+        outils_conversion.euros_devise(10, "XXX")
+    with pytest.raises(ValueError):
+        outils_conversion.euros_devise(-5, "USD")

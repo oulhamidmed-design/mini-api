@@ -25,3 +25,17 @@ def km_miles(km: float) -> float:
     if not isfinite(km) or km < 0:
         raise ValueError("la distance doit être un nombre positif")
     return round(km * MILES_PAR_KM, 4)
+
+
+def euros_devise(montant: float, devise: str) -> float:
+    """Convertit un montant en euros vers une devise (taux fixes indicatifs).
+
+    Lève ValueError si le montant est invalide ou la devise inconnue.
+    """
+    if not isfinite(montant) or montant < 0:
+        raise ValueError("le montant doit être un nombre positif")
+    code = devise.upper()
+    if code not in TAUX_EURO:
+        choix = ", ".join(TAUX_EURO)
+        raise ValueError(f"devise inconnue : {devise} (choix possibles : {choix})")
+    return round(montant * TAUX_EURO[code], 2)
